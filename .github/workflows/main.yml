@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Haxe
-        run: brew install haxe 4.3.6
+        run: brew install haxe
 
       - name: Install Dependencies
         run: |
