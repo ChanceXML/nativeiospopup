@@ -23,6 +23,7 @@ jobs:
           echo $HOME/haxelib | haxelib setup
           haxelib install lime --quiet
           haxelib install openfl --quiet
+          haxelib install openfl-samples --quiet
           yes | haxelib run lime setup
           haxelib dev nativeiospopup .
 
