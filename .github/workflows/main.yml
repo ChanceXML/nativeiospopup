@@ -31,13 +31,33 @@ jobs:
         run: |
           mkdir test-project
           cd test-project
-          haxelib run lime create openfl --null
           
-          sed -i '' '/<haxelib name="openfl" \/>/a \
-          <haxelib name="nativeiospopup" />' Project.xml
-          
-          sed -i '' '/super();/a \
-          nativeiospopup.NativePopup.show("Test", "CI Test Message");' Source/Main.hx
+          cat <<EOF > Project.xml
+          <?xml version="1.0" encoding="utf-8"?>
+          <project>
+              <meta title="TestProject" package="com.test.app" version="1.0.0" />
+              <app main="Main" file="TestProject" path="export" />
+              <source path="Source" />
+              <haxelib name="lime" />
+              <haxelib name="openfl" />
+              <haxelib name="nativeiospopup" />
+          </project>
+          EOF
+
+          mkdir Source
+          cat <<EOF > Source/Main.hx
+          package;
+          import openfl.display.Sprite;
+          import nativeiospopup.NativePopup;
+
+          class Main extends Sprite {
+              public function new() {
+                  super();
+                  trace("Attempting to show popup...");
+                  NativePopup.show("CI Test", "This is a test from GitHub Actions");
+              }
+          }
+          EOF
           
       - name: Build for iOS
         run: |
