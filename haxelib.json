@@ -1,0 +1,12 @@
+{
+  "name": "nativeiospopup",
+  "url": "https://github.com/ChanceXML/nativeiospopup",
+  "license": "MIT",
+  "tags": ["ios", "popup", "lime", "openfl"],
+  "description": "A custom Haxe library to trigger native iOS alerts.",
+  "version": "1.0.0",
+  "classPath": "",
+  "releasenotes": "Initial release",
+  "contributors": ["ChanceXML"],
+  "dependencies": {}
+}
