@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <section if="ios">
+        <dependency name="UIKit.framework" />
+        <file path="project/ios/NativePopupObjectiveC.mm" />
+    </section>
+</project>
