@@ -29,8 +29,9 @@ jobs:
 
       - name: Create Test Project
         run: |
-          haxelib run lime create openfl test-project
+          mkdir test-project
           cd test-project
+          haxelib run lime create openfl --null
           
           sed -i '' '/<haxelib name="openfl" \/>/a \
           <haxelib name="nativeiospopup" />' Project.xml
