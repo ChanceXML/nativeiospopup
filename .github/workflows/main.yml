@@ -8,17 +8,14 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-13
+    runs-on: macos-latest
     # yml made to test if the library works
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1
-        with:
-          haxe-version: 4.3.6
-          architecture: arm64
+        run: brew install haxe
 
       - name: Install Dependencies
         run: |
