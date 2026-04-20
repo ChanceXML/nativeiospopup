@@ -1,0 +1,43 @@
+name: iOS Build Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    # yml made to test if the library works
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.4
+
+      - name: Install Dependencies
+        run: |
+          haxelib install lime
+          haxelib install openfl
+          haxelib run lime setup
+          haxelib dev nativeiospopup .
+
+      - name: Create Test Project
+        run: |
+          mkdir test-project
+          cd test-project
+          haxelib run lime create openfl
+          
+          sed -i '' '/<haxelib name="openfl" \/>/a \
+          <haxelib name="nativeiospopup" />' Project.xml
+          
+          sed -i '' '/super();/a \
+          nativeiospopup.NativePopup.show("Test", "CI Test Message");' Source/Main.hx
+
+      - name: Build for iOS
+        run: |
+          haxelib run lime build ios -nosign
