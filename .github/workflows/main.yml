@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-13
     # yml made to test if the library works
     steps:
       - name: Checkout Code
