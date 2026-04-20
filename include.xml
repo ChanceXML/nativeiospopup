@@ -2,6 +2,5 @@
 <project>
     <section if="ios">
         <dependency name="UIKit.framework" />
-        <file path="project/ios/NativePopupObjectiveC.mm" />
     </section>
 </project>
