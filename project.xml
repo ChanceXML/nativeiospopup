@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+    <meta title="nativeiospopup" version="1.0.0" company="MyName" />
+    
+    <source path="." />
+
+    <haxelib name="lime" />
+
+    <section if="ios">
+        <dependency name="UIKit.framework" />
+    </section>
+
+</project>
